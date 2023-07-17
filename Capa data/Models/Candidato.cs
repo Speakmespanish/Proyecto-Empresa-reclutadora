@@ -13,8 +13,9 @@ namespace Capa_data.Models
         public string Email { get; set; }
         public decimal Aspiracion_salarial { get; set; }
 
-        public int vacanteid { get; set; }
-        public IEnumerable<Vacante> vacante { get; set; }
+        public string vacante { get; set; }
+
+        public Candidato () { }
 
         public Candidato (long cedula, string nombre, string email, decimal aspiracion_salarial)
         {
@@ -22,6 +23,15 @@ namespace Capa_data.Models
             Nombre = nombre;
             Email = email;
             Aspiracion_salarial = aspiracion_salarial;
+        }
+
+        public Candidato (long cedula, string nombre, string email, decimal aspiracion_salarial, string vacante)
+        {
+            Cedula = cedula;
+            Nombre = nombre;
+            Email = email;
+            Aspiracion_salarial = aspiracion_salarial;
+            vacante = vacante;
         }
     }
 }

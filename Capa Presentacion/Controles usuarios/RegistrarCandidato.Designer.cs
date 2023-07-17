@@ -39,6 +39,8 @@
             this.txtCedula = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudAspiracionSalarial)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,17 +73,18 @@
             this.btnRegistrar.TabIndex = 15;
             this.btnRegistrar.Text = "Registrar candidato";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // nudAspiracionSalarial
             // 
-            this.nudAspiracionSalarial.Location = new System.Drawing.Point(305, 306);
+            this.nudAspiracionSalarial.Location = new System.Drawing.Point(305, 282);
             this.nudAspiracionSalarial.Name = "nudAspiracionSalarial";
             this.nudAspiracionSalarial.Size = new System.Drawing.Size(128, 23);
             this.nudAspiracionSalarial.TabIndex = 13;
             // 
             // txtNombreCandidato
             // 
-            this.txtNombreCandidato.Location = new System.Drawing.Point(305, 166);
+            this.txtNombreCandidato.Location = new System.Drawing.Point(305, 142);
             this.txtNombreCandidato.Name = "txtNombreCandidato";
             this.txtNombreCandidato.Size = new System.Drawing.Size(211, 23);
             this.txtNombreCandidato.TabIndex = 12;
@@ -90,7 +93,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(38, 306);
+            this.label2.Location = new System.Drawing.Point(38, 282);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(191, 18);
             this.label2.TabIndex = 10;
@@ -100,7 +103,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(38, 167);
+            this.label1.Location = new System.Drawing.Point(38, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 18);
             this.label1.TabIndex = 9;
@@ -110,7 +113,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(38, 106);
+            this.label5.Location = new System.Drawing.Point(38, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 18);
             this.label5.TabIndex = 18;
@@ -118,14 +121,14 @@
             // 
             // txtCedula
             // 
-            this.txtCedula.Location = new System.Drawing.Point(305, 105);
+            this.txtCedula.Location = new System.Drawing.Point(305, 81);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(193, 23);
             this.txtCedula.TabIndex = 19;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(305, 234);
+            this.txtEmail.Location = new System.Drawing.Point(305, 210);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(193, 23);
             this.txtEmail.TabIndex = 21;
@@ -134,16 +137,36 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(38, 235);
+            this.label3.Location = new System.Drawing.Point(38, 211);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 18);
             this.label3.TabIndex = 20;
             this.label3.Text = "Email:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(38, 338);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(214, 18);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Vacantes para aplicar:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(305, 337);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(140, 23);
+            this.comboBox1.TabIndex = 23;
+            // 
             // RegistrarCandidato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCedula);
@@ -157,6 +180,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RegistrarCandidato";
             this.Size = new System.Drawing.Size(714, 427);
+            this.Load += new System.EventHandler(this.RegistrarCandidato_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudAspiracionSalarial)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,5 +200,7 @@
         private TextBox txtCedula;
         private TextBox txtEmail;
         private Label label3;
+        private Label label6;
+        private ComboBox comboBox1;
     }
 }

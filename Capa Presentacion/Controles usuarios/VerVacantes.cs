@@ -14,10 +14,10 @@ namespace Capa_Presentacion.Controles_usuarios
 {
     public partial class VerVacantes : UserControl
     {
-        private VacanteService _vacanteservice;
+        private Dvacante _vacanteservice;
         public VerVacantes()
         {
-            _vacanteservice = new VacanteService();
+            _vacanteservice = new Dvacante();
             InitializeComponent();
         }
 

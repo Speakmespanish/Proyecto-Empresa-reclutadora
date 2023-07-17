@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Capa_negocio.Services
 {
-    public class VacanteService
+    public class Dvacante
     {
 
         public List<Vacante> GetAll ()
