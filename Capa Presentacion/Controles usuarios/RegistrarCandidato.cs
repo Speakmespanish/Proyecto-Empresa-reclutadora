@@ -65,7 +65,7 @@ namespace Capa_Presentacion.Controles_usuarios
             }
             else
             {
-                MessageBox.Show("Ha ocurrido un error, no se pudo registrar al candidato");
+                MessageBox.Show("Ha ocurrido un error, no se pudo registrar al candidato!");
             }
         }
     }
