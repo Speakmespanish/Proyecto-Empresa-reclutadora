@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa_data.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace Capa_data.Models
         public string Nombre { get; set; }
         public decimal Salario { get; set; }
         public bool Disponibilidad { get; set; }
+
+        public List<IObserver> O_candidatos = new List<IObserver>();
 
         public Vacante (int id, string nombre, decimal salario, bool disponibilidad)
         {
@@ -31,6 +34,24 @@ namespace Capa_data.Models
         public Vacante ()
         {
 
+        }
+
+        public void Suscribir(IObserver observer)
+        {
+            O_candidatos.Add(observer);
+        }
+
+        public void Desuscribir(IObserver observer)
+        {
+            O_candidatos.Remove(observer);
+        }
+
+        public void Notificar()
+        {
+            foreach (IObserver element in O_candidatos)
+            {
+                element.Update();
+            }
         }
     }
 }

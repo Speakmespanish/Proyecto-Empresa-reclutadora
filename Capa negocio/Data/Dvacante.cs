@@ -87,6 +87,7 @@ namespace Capa_negocio.Services
                         cmd.ExecuteNonQuery();
 
                         conn.Close();
+                        vacante.Notificar();
                         return true;
                     }
                     catch { return false; }
