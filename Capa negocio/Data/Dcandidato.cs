@@ -64,6 +64,8 @@ namespace Capa_negocio.Data
                         cmd.ExecuteNonQuery();
 
                         conn.Close();
+                        Vacante vacante = new Vacante();
+                        vacante.Suscribir(candidato);
                         return true;
                     } catch { return false; }
                 }
@@ -76,8 +78,8 @@ namespace Capa_negocio.Data
             {
                 string query = "UPDATE Candidato SET AspiracionSalarial = @AspSalarial" +
                     " WHERE Cedula = @Cedula";
-
                 conn.Open();
+
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     try
@@ -109,6 +111,10 @@ namespace Capa_negocio.Data
                         cmd.ExecuteNonQuery();
 
                         conn.Close();
+                        Vacante vacante = new Vacante();
+                        List<Candidato> candidatos =  vacante.O_candidatos;
+
+                        vacante.Desuscribir(candidatos.FirstOrDefault(e => e.Cedula == cedula));
                         return true;
                     }
                     catch { return false; }

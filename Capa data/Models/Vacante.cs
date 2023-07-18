@@ -14,7 +14,7 @@ namespace Capa_data.Models
         public decimal Salario { get; set; }
         public bool Disponibilidad { get; set; }
 
-        public List<IObserver> O_candidatos = new List<IObserver>();
+        public List<Candidato> O_candidatos = new List<Candidato>();
 
         public Vacante (int id, string nombre, decimal salario, bool disponibilidad)
         {
@@ -36,20 +36,21 @@ namespace Capa_data.Models
 
         }
 
-        public void Suscribir(IObserver observer)
+        public void Suscribir(Candidato observer)
         {
             O_candidatos.Add(observer);
         }
 
-        public void Desuscribir(IObserver observer)
+        public void Desuscribir(Candidato observer)
         {
             O_candidatos.Remove(observer);
         }
 
         public void Notificar()
         {
-            foreach (IObserver element in O_candidatos)
+            foreach (Candidato element in O_candidatos)
             {
+
                 element.Update();
             }
         }
