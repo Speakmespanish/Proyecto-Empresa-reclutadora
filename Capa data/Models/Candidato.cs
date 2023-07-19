@@ -40,21 +40,28 @@ namespace Capa_data.Models
         public void Update()
         {
             string remitente = "andysonvargas180@gmail.com";
-            string destinatario = "andysonvargasmedina170@hotmail.com";
+            string destinatario = "andysonvargas180@gmail.com";
             string asunto = "Vacante disponible";
             string cuerpo = "Hay una nueva vacante para el puesto al que postulaste";
+            string contra = "aeotyebvydnlwynn";
 
-            SmtpClient cliente = new SmtpClient("smtp.gmail.com", 587);
-            cliente.Credentials = new NetworkCredential("user", "contra");
+            SmtpClient cliente = new SmtpClient("smtp.gmail.com");
+            cliente.EnableSsl = true;
+            cliente.UseDefaultCredentials = false;
+            cliente.Host = "smtp.gmail.com";
+            cliente.Port = 587;
+            cliente.Credentials = new NetworkCredential(remitente, contra);
 
             MailMessage message = new MailMessage(remitente, destinatario, asunto, cuerpo);
 
             try
             {
                 cliente.Send(message);
+                cliente.Dispose();
             }
             catch (Exception ex)
             {
+                cliente.Dispose();
                 throw new ArgumentException("Ha ocurrido un error, no se pudo enviar el email");
             }
         }

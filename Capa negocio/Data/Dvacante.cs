@@ -1,5 +1,7 @@
 ﻿using Capa_data.Conexion;
+using Capa_data.Interfaces;
 using Capa_data.Models;
+using Capa_negocio.Data;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -87,6 +89,19 @@ namespace Capa_negocio.Services
                         cmd.ExecuteNonQuery();
 
                         conn.Close();
+                        Dcandidato candidato = new Dcandidato();
+                        List<Candidato> candidatos = new List<Candidato>();
+                        foreach (Candidato element in candidato.GetAll())
+                        {
+                            candidatos.Add(element);
+                        }
+                        List<IObserver> observadores = candidatos.ConvertAll(c => (IObserver)c);
+
+                        foreach (IObserver element in observadores)
+                        {
+                            vacante.Suscribir(element);
+                        }
+                        
                         vacante.Notificar();
                         return true;
                     }

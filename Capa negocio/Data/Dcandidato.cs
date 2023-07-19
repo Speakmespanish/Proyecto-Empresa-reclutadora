@@ -112,7 +112,7 @@ namespace Capa_negocio.Data
 
                         conn.Close();
                         Vacante vacante = new Vacante();
-                        List<Candidato> candidatos =  vacante.O_candidatos;
+                        List<Candidato> candidatos =  vacante.O_candidatos.ConvertAll(c => (Candidato)c);
 
                         vacante.Desuscribir(candidatos.FirstOrDefault(e => e.Cedula == cedula));
                         return true;
