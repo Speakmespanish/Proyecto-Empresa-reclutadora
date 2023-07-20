@@ -97,7 +97,7 @@ namespace Capa_negocio.Services
                         }
                         List<IObserver> observadores = candidatos.ConvertAll(c => (IObserver)c);
 
-                        foreach (IObserver element in observadores)
+                        foreach (Candidato element in observadores)
                         {
                             vacante.Suscribir(element);
                         }

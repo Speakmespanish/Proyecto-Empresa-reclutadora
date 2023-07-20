@@ -9,7 +9,7 @@ using System.Net.Mail;
 
 namespace Capa_data.Models
 {
-    public class Candidato: IObserver
+    public class Candidato: IObserver<Candidato>
     {
         public long Cedula { get; set; }
         public string Nombre { get; set; }
@@ -37,13 +37,13 @@ namespace Capa_data.Models
             vacante = vacante;
         }
 
-        public void Update()
+        public void Update(Candidato observador)
         {
-            string remitente = "andysonvargas180@gmail.com";
-            string destinatario = "andysonvargas180@gmail.com";
+            string remitente = "Colocar email del remitente";
+            string destinatario = observador.Email;
             string asunto = "Vacante disponible";
-            string cuerpo = "Hay una nueva vacante para el puesto al que postulaste";
-            string contra = "aeotyebvydnlwynn";
+            string cuerpo = $"Hola {observador.Nombre}, hay una vacante disponible que te podria interesar!";
+            string contra = "Colocar contrasena del remitente";
 
             SmtpClient cliente = new SmtpClient("smtp.gmail.com");
             cliente.EnableSsl = true;
@@ -64,6 +64,21 @@ namespace Capa_data.Models
                 cliente.Dispose();
                 throw new ArgumentException("Ha ocurrido un error, no se pudo enviar el email");
             }
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNext(Candidato value)
+        {
+            throw new NotImplementedException();
         }
     }
 }
